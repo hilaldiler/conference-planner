@@ -2,10 +2,10 @@ package com.casestudy.planner.model;
 
 public class Presentation {
 	
-	public String subject;
-	public int duration;	
+	private String subject;
+	private String duration;	
 	
-	public Presentation(String subject, int duration) {
+	public Presentation(String subject, String duration) {
 		this.subject = subject;
 		this.duration = duration;
 	}
@@ -18,12 +18,18 @@ public class Presentation {
 		this.subject = subject;
 	}
 	
-	public int getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 	
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
+	public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+	@Override
+    public String toString() {
+        return String.format("%s %s", subject, duration);
+    }
 
 }
+

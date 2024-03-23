@@ -2,10 +2,11 @@ package com.casestudy.planner.service;
 
 import java.util.List;
 
-import com.casestudy.planner.model.Conference;
 import com.casestudy.planner.model.Presentation;
+import com.casestudy.planner.response.ConferencePlanResponse;
 
 public interface ConferenceService {
 
-	List<Conference> planConference(List<Presentation> presentations);
+	List<ConferencePlanResponse> planConference(List<Presentation> presentations);
 }
+

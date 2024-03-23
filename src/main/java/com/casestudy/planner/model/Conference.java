@@ -7,7 +7,7 @@ public class Conference {
     private List<ConferenceSession> morningSessions;
     private List<ConferenceSession> afternoonSessions;
 
-    public Conference() {
+    public Conference(List<ConferenceSession> morningSessions, List<ConferenceSession> afternoonSessions) {
         this.morningSessions = new ArrayList<>();
         this.afternoonSessions = new ArrayList<>();
     }
