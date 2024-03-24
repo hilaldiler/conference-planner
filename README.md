@@ -32,6 +32,8 @@ mvn spring-boot:run
 Once the application is launched, you can send presentations and retrieve the conference plan by making an HTTP request.
 
 An example POST request:
+* POST /conferencePlan 
+* Host: localhost:8080
 
 ## Sample Request
 ```JSON
