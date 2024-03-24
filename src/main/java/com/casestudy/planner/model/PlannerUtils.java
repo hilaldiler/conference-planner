@@ -18,7 +18,11 @@ public class PlannerUtils{
         } else {
             Matcher matcher = Pattern.compile("(\\d+)min").matcher(duration);
             if (matcher.find()) {
-                return Integer.parseInt(matcher.group(1).trim());
+            	int parsedDuration = Integer.parseInt(matcher.group(1).trim());
+                if (parsedDuration < 0) {
+                    throw new IllegalArgumentException("Invalid duration format: " + duration);
+                }
+                return parsedDuration;
             } else {
                 throw new IllegalArgumentException("Invalid duration format: " + duration);
             }
@@ -26,7 +30,11 @@ public class PlannerUtils{
 	}
 
     
-    public static String formatTime(LocalDateTime dateTime) {
-    	return dateTime.format(DateTimeFormatter.ofPattern("hh:mma", Locale.ENGLISH));
-    }
+	public static String formatTime(LocalDateTime dateTime) {
+	    if (dateTime == null) {
+	        throw new NullPointerException("DateTime cannot be null");
+	    }
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mma", Locale.ENGLISH); 
+	    return dateTime.format(formatter);
+	}
 }

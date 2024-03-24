@@ -22,7 +22,11 @@ public class Track {
 
     public LocalDateTime getCurrenTime() {
     	return this.currentTime;
-    }   
+    } 
+    
+    public void setCurrentTime(LocalDateTime currenTime) {
+    	this.currentTime = currentTime;
+    }  
     
     public boolean canAddPresentation(Presentation presentation) {
         int duration = PlannerUtils.parseDuration(presentation.getDuration());

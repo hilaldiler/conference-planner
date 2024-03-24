@@ -20,24 +20,26 @@ public class ConferenceBuilder {
         int trackNumber = 1;
 
         Track currentTrack = tracks.get(0);
-        for (Presentation presentation : presentations) {
-            if (!currentTrack.canAddPresentation(presentation)) {
-                if (currentTrack.isLunchTime()) {
-                    currentTrack.addLunchTime();
-                } else if (currentTrack.canAddNetworkEvent()) {
-                    currentTrack.addNetworkEvent();
+        if(presentations != null) {
+        	for (Presentation presentation : presentations) {
+                if (!currentTrack.canAddPresentation(presentation)) {
+                    if (currentTrack.isLunchTime()) {
+                        currentTrack.addLunchTime();
+                    } else if (currentTrack.canAddNetworkEvent()) {
+                        currentTrack.addNetworkEvent();
+                    }
+
+                    if (currentTrack.endTheTrack()) {
+                        conferencePlans.addAll(currentTrack.getConferencePlanResponses(trackNumber));
+                        currentTrack = getNextTrack(trackNumber);
+                        trackNumber++;
+                    }
                 }
 
-                if (currentTrack.endTheTrack()) {
-                    conferencePlans.addAll(currentTrack.getConferencePlanResponses(trackNumber));
-                    currentTrack = getNextTrack(trackNumber);
-                    trackNumber++;
-                }
+                currentTrack.addPresentation(presentation);
             }
-
-            currentTrack.addPresentation(presentation);
         }
-        
+       
         if (currentTrack.canAddNetworkEvent()) {
             currentTrack.addNetworkEvent();
         }
